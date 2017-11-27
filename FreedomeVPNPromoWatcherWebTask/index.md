@@ -127,7 +127,13 @@ module.exports = (context, cb) => {cb(null, "Job done")}
 **Second** we will need to invoke the twitter API to get tweets.
 We do this by invoke the twitter API at `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=freedomeVPN&count=100&exclude_replies=true&trim_user=true&since_id=XXXXXX`.  This basically gets us a JSON response with all tweets from @freedomeVPN since the tweetId specified on the `since_id` parameter
 
-We must include our authentication header to those calls.  We do it by using this set of properties on the request to the twitter API:
+We must include our authentication header to those calls.  This is a 2 step process.
+
+We will be using the the concept of `application only` authentication for the twitter api.  This means that we have to exchange our username/password for a bearer token and then use that bearer token against the twitter API.
+
+Since the bearer don't seem to expire, we just use Postman to `POST` to <https://api.twitter.com/oauth2/token> using basic auth where the username is the API key and the password is the API Secret.  That gives us back an access token in the form of `Bearer XXXXXX`
+![twitter Creds to Bearer Token](twitterCredsToToken.png "Exchange credentials for Token")
+  We set that bearer on the authorization header of every twitter API calls like so:
 
 ``` js
     headers: {
