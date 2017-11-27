@@ -17,9 +17,9 @@ Example of email received when the notification fires:
 *Serverless* is pretty hot these days.  The idea being that you can just worry about code and the infrastructure on which is run is great.  Also, serverless platform (Auth0`s Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
 
 So, we write a javascript function that will, on a schedule:
-1. fetch the latest tweets from `@freedomeVPN`
-2. Scan through the tweets text to figure out if there's a promotion in there
-3. Use the [Sendgrid Mail v3 API ](https://sendgrid.com/docs/API_Reference/api_v3.html) to send ourselves an email with that tweet information
+- fetch the latest tweets from `@freedomeVPN`
+- Scan through the tweets text to figure out if there's a promotion in there
+- Use the [Sendgrid Mail v3 API ](https://sendgrid.com/docs/API_Reference/api_v3.html) to send ourselves an email with that tweet information
 
 ### Step 1: setup a `twitter` dev account and app
 - If not already done, head over to <https://developer.twitter.com> and register as a twitter dev (think you need to click on 'Apply')
