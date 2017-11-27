@@ -8,6 +8,11 @@
 ### The idea
 Ok, so the idea is that watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome), be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ year now and it's great.  I started using it on Troy Hunt's recommendation and I'm very satisfied with it.  
 
+Example of email received when the notification fires:
+![email received](sampleEmail.png "Email notification")
+
+> Ok, it's a bit rough but it does the job for now ;)
+
 ### How are we going to do this
 *Serverless* is pretty hot these days.  The idea being that you can just worry about code and the infrastructure on which is run is great.  Also, serverless platform (Auth0`s Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
 
@@ -151,4 +156,14 @@ You can now set the task to run every X.  We have ours set to run every 6 hours.
 
 ### It's a bit rough --> things that could be improved
 
+As you can see, this is still a bit rought around the edges and a lot of things can be improved.  For example:
+- Things to make it less obvious that I'm more familiar with C# than Javascript ;)
+  - Maybe using things like `Async` to make code more readable
+- Handle the case where multiple tweets have the '%' char in it
+- ...
+
 ### Conclusion
+
+I've worked on this webtask because I wanted to experiement with threading together different service in an serverless environment. I know there are options out there to do similar things.
+-  I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
+- I know <https://zapier.com> can be used here but not sure about the pricing
