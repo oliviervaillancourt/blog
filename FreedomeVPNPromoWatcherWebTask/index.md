@@ -47,6 +47,8 @@ module.exports = (context, cb) => {
 
     context.storage.get(function (error, data) {
         var lastTweetId = data.lastTweetId;
+        var fromEmail = context.secrets.FROM_EMAIL;
+        var toEmail = context.secrets.TO_EMAIL;
 
         var twitterUrl = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=freedomeVPN&count=100&exclude_replies=true&trim_user=true';
         if (lastTweetId) {
@@ -76,9 +78,9 @@ module.exports = (context, cb) => {
 
                     if (promoTweets.length > 0) {
                         const mail = new helper.Mail(
-                            new helper.Email("olivier.vaillancourt@gmail.com"),
+                            new helper.Email(fromEmail),
                             'Freedome Promo Watcher Task',
-                            new helper.Email('olivier.vaillancourt+freedomepromowatcher@gmail.com'),
+                            new helper.Email(toEmail),
                             new helper.Content('text/plain', JSON.stringify(promoTweets[0])));
                         const sg = sendgrid(context.secrets.SENDGRID_API_KEY);
                         const request = sg.emptyRequest({
@@ -106,6 +108,7 @@ module.exports = (context, cb) => {
             .catch(cb);
     });
 };
+
 ``` 
 
 Let's break it down a bit...
