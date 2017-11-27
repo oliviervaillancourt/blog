@@ -1,24 +1,24 @@
 # Getting notified of promo on *Freedome VPN* using Auth0 Webtask, for free
 
 
- ## In this blog post, we will cover how to use [Auth0's Webtask](https://webtask.io) a serverless platform to monitor the twitter feed of *FreedomeVPN* and send us an email using [Sendgrid](https://sendgrid.com) when we find a promotion on Freedome VPN
+ ## In this blog post, we will cover how to use [Auth0's Webtask](https://webtask.io), a serverless platform to monitor the twitter feed of *FreedomeVPN* and send us an email using [Sendgrid](https://sendgrid.com) when we find a promotion on Freedome VPN
 
 ----
 
 ### The idea
-Ok, so the idea is that watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome), be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ year now and it's great.  I started using it on Troy Hunt's recommendation and I'm very satisfied with it.  
+Ok, so the idea is that watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome) be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ year now and it's great.  I started using it on [Troy Hunt's](https://www.troyhunt.com/the-importance-of-trust-and-integrity-in-a-vpn-provider-and-how-mysafevpn-blew-it/) recommendation and I'm very satisfied with it.  
 
 Example of email received when the notification fires:
 ![email received](sampleEmail.png "Email notification")
 
-> Ok, it's a bit rough but it does the job for now ;)
+> Ok, it's a bit rough and could be improved but it does the job for now ;)
 
-### How are we going to do this
-*Serverless* is pretty hot these days.  The idea being that you can just worry about code and the infrastructure on which is run is great.  Also, serverless platform (Auth0`s Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
+### How are we going to do this?
+*Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which is run is great.  Also, serverless platform (Auth0`s Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
 
 So, we write a javascript function that will, on a schedule:
 - fetch the latest tweets from `@freedomeVPN`
-- Scan through the tweets text to figure out if there's a promotion in there
+- Scan through each tweet's text to figure out if there's a promotion in there
 - Use the [Sendgrid Mail v3 API ](https://sendgrid.com/docs/API_Reference/api_v3.html) to send ourselves an email with that tweet information
 
 ### Step 1: setup a `twitter` dev account and app
@@ -31,7 +31,7 @@ So, we write a javascript function that will, on a schedule:
 ### Step 2: setup a `Sendgrid` account
 1. Create yourself a free account at <https://sendgrid.com>.
 2. I think you have to complete their **Integration** flow for your account to be active, but I'm not sure.  I had a little bit of difficulty here and had to chat with support which got the matter resolved.
-3. Get an API key like so **Take a note of the API Key somewhere**:
+3. Get an API key like so: **Take a note of the API Key somewhere**:
 ![sendgrid Api Key](sendGridApiKey.png "SendGrid API Key")
 
 ### Step 3: setup a `Auth0 webtask`
@@ -118,7 +118,7 @@ module.exports = (context, cb) => {
 
 Let's break it down a bit...
 
-**First** the programming model that webtask uses is described in details [here](https://webtask.io/docs/model) but the general idea of it is that we need to export a function that will call the node.js callback function (`cb` in this case) when your job is done.  `Auth0 webtask` will invoke that function either on 1) a http request on the webtask URL or 2) on a CRON schedule.
+**First** the programming model that webtask uses is described in details [here](https://webtask.io/docs/model) but the general idea of it is that we need to export a function that will be call the node.js callback function (`cb` in this case) when your job is done.  `Auth0 webtask` will invoke our function either on 1) a http request on the webtask URL or 2) on a CRON schedule.
 
 ```js
 module.exports = (context, cb) => {cb(null, "Job done")}
@@ -133,9 +133,9 @@ We must include our authentication header to those calls.  We do it by using thi
     headers: {
     'Authorization': 'Bearer ' + context.secrets.TWITTER_API_KEY
 ```
-Notice that we are pulling from a Webtask concept called `secrets`.  This is basically a set of encrypted value that your webtask has access to.  Great place to put API keys.  In order to set the secret, you can use the editor ![secret manager](secretManager.png "Setting secret Value")
+Notice that we are pulling the twitter api key from a Webtask concept called `secrets`.  This is basically a set of encrypted value that your webtask has access to.  Great place to put API keys.  In order to set the secret, you can use the editor ![secret manager](secretManager.png "Setting secret Value")
 
-**Third** we will check if any tweet returned by the API seem to have a promotion in it.  So far, this check is *very very very* simplistic (we just check that the string of the tweet as a '%' in it)
+**Third** we will check if any tweet returned by the API seem to have a promotion in it.  So far, this check is *very very very* simplistic (we just check that the string of the tweet contains '%')
 ```js
 if (respJson[i].text.includes('%')) {
 ```
@@ -156,14 +156,16 @@ You can now set the task to run every X.  We have ours set to run every 6 hours.
 
 ### It's a bit rough --> things that could be improved
 
-As you can see, this is still a bit rought around the edges and a lot of things can be improved.  For example:
+As you can see, this is still a bit rough around the edges and a lot of things can be improved.  For example:
 - Things to make it less obvious that I'm more familiar with C# than Javascript ;)
-  - Maybe using things like `Async` to make code more readable
+  - Maybe using things like `Async` npm module to make code more readable
 - Handle the case where multiple tweets have the '%' char in it
 - ...
 
 ### Conclusion
 
-I've worked on this webtask because I wanted to experiement with threading together different service in an serverless environment. I know there are options out there to do similar things.
+I've worked on this webtask because I wanted to experiement with threading together different service in an serverless environment. I know there are other options out there to do similar things.
 -  I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
 - I know <https://zapier.com> can be used here but not sure about the pricing
+
+*Hope it helps*
