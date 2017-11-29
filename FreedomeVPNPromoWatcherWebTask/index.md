@@ -25,7 +25,7 @@ So, we write a javascript function that will, on a schedule:
 - If not already done, head over to <https://developer.twitter.com> and register as a twitter dev (think you need to click on 'Apply')
 - Twitter API works off the concept of application.  Basically any https calls made to the API must be made in the *context* of an application.  There's a lot more than we need here, but we still need an application.  Navigate to <https://apps.twitter.com> and create a new application like so:
 ![twitter app creation](twitterAppCreation.png "Twitter app creation")
-- Then take note of the `API Key`and `API Secret` from the `Keys and Access Tokens` tab.  They will be used to authenticate against the twitter api later:
+- Then take note of the `API Key` and `API Secret` from the `Keys and Access Tokens` tab.  They will be used to authenticate against the twitter api later:
 ![twitter keys](twitterAppKeys.png "Twitter keys")
 
 ### Step 2: setup a `Sendgrid` account
@@ -34,7 +34,7 @@ So, we write a javascript function that will, on a schedule:
 3. Get an API key like so: **Take a note of the API Key somewhere**:
 ![sendgrid Api Key](sendGridApiKey.png "SendGrid API Key")
 
-### Step 3: setup a `Auth0 webtask`
+### Step 3: setup an `Auth0 webtask`
 1. Go to <https://webtask.io> and setup your account
 2. You can use the CLI to create the webtask but I've used the HTML editor instead.  So go to <https://webtask.io/make> to invoke the editor
 3. Create a new Webtask (select `Empty Function` for the type) and give it a name
@@ -170,7 +170,7 @@ As you can see, this is still a bit rough around the edges and a lot of things c
 
 ### Conclusion
 
-I've worked on this webtask because I wanted to experiement with threading together different service in an serverless environment. I know there are other options out there to do similar things.
+I've worked on this webtask because I wanted to experiement with threading together different service in a serverless environment. I know there are other options out there to do similar things.
 -  I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
 - I know <https://zapier.com> can be used here but not sure about the pricing
 
