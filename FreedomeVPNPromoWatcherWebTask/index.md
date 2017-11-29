@@ -6,7 +6,7 @@
 ----
 
 ### The idea
-Ok, so the idea is that watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome) be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ year now and it's great.  I started using it on [Troy Hunt's](https://www.troyhunt.com/the-importance-of-trust-and-integrity-in-a-vpn-provider-and-how-mysafevpn-blew-it/) recommendation and I'm very satisfied with it.  
+Ok, so the idea is to watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome), be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ year now and it's great.  I started using it on [Troy Hunt's](https://www.troyhunt.com/the-importance-of-trust-and-integrity-in-a-vpn-provider-and-how-mysafevpn-blew-it/) recommendation and I'm very satisfied with it.  
 
 Example of email received when the notification fires:
 ![email received](sampleEmail.png "Email notification")
