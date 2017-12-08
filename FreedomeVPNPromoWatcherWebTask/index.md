@@ -9,7 +9,7 @@
 Ok, so the idea is to watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome), be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ year now and it's great.  I started using it on [Troy Hunt's](https://www.troyhunt.com/the-importance-of-trust-and-integrity-in-a-vpn-provider-and-how-mysafevpn-blew-it/) recommendation and I'm very satisfied with it.  
 
 Example of email received when the notification fires:
-![email received](https://github.com/oliviervaillancourt/blog/blob/master/FreedomeVPNPromoWatcherWebTask/sampleEmail.png "Email notification")
+![email received](sampleEmail.png "Email notification")
 
 > Ok, it's a bit rough and could be improved but it does the job for now ;)
 
@@ -25,15 +25,15 @@ So, we write a javascript function that will, on a schedule:
 ### Step 1: setup a `twitter` dev account and app
 - If not already done, head over to <https://developer.twitter.com> and register as a twitter dev (think you need to click on 'Apply')
 - Twitter API works off the concept of application.  Basically any https calls made to the API must be made in the *context* of an application.  There's a lot more than we need here, but we still need an application.  Navigate to <https://apps.twitter.com> and create a new application like so:
-![twitter app creation](https://github.com/oliviervaillancourt/blog/blob/master/FreedomeVPNPromoWatcherWebTask/twitterAppCreation.png "Twitter app creation")
+![twitter app creation](twitterAppCreation.png "Twitter app creation")
 - Then take note of the `API Key` and `API Secret` from the `Keys and Access Tokens` tab.  They will be used to authenticate against the twitter api later:
-![twitter keys](https://github.com/oliviervaillancourt/blog/blob/master/FreedomeVPNPromoWatcherWebTask/twitterAppKeys.png "Twitter keys")
+![twitter keys](twitterAppKeys.png "Twitter keys")
 
 ### Step 2: setup a `Sendgrid` account
 1. Create yourself a free account at <https://sendgrid.com>.
 2. I think you have to complete their **Integration** flow for your account to be active, but I'm not sure.  I had a little bit of difficulty here and had to chat with support which got the matter resolved.
 3. Get an API key like so: **Take a note of the API Key somewhere**:
-![sendgrid Api Key](https://github.com/oliviervaillancourt/blog/blob/master/FreedomeVPNPromoWatcherWebTask/sendGridApiKey.png "SendGrid API Key")
+![sendgrid Api Key](sendGridApiKey.png "SendGrid API Key")
 
 ### Step 3: setup an `Auth0 webtask`
 1. Go to <https://webtask.io> and setup your account
@@ -133,14 +133,14 @@ We must include our authentication header to those calls.  This is a 2 step proc
 We will be using the the concept of `application only` authentication for the twitter api.  This means that we have to exchange our username/password for a bearer token and then use that bearer token against the twitter API.
 
 Since the bearer don't seem to expire, we just use Postman to `POST` to <https://api.twitter.com/oauth2/token> using basic auth where the username is the API key and the password is the API Secret.  That gives us back an access token in the form of `Bearer XXXXXX`
-![twitter Creds to Bearer Token](https://github.com/oliviervaillancourt/blog/blob/master/FreedomeVPNPromoWatcherWebTask/twitterCredsToToken.png "Exchange credentials for Token")
+![twitter Creds to Bearer Token](twitterCredsToToken.png "Exchange credentials for Token")
   We set that bearer on the authorization header of every twitter API calls like so:
 
 ```
     headers: {
     'Authorization': 'Bearer ' + context.secrets.TWITTER_API_KEY
 ```
-Notice that we are pulling the twitter api key from a Webtask concept called `secrets`.  This is basically a set of encrypted value that your webtask has access to.  Great place to put API keys.  In order to set the secret, you can use the editor ![secret manager](https://github.com/oliviervaillancourt/blog/blob/master/FreedomeVPNPromoWatcherWebTask/secretManager.png "Setting secret Value")
+Notice that we are pulling the twitter api key from a Webtask concept called `secrets`.  This is basically a set of encrypted value that your webtask has access to.  Great place to put API keys.  In order to set the secret, you can use the editor ![secret manager](secretManager.png "Setting secret Value")
 
 **Third** we will check if any tweet returned by the API seem to have a promotion in it.  So far, this check is *very very very* simplistic (we just check that the string of the tweet contains '%')
 ```js
@@ -159,7 +159,7 @@ We have to save the last tweet ID returned in this request to not request it aga
 ### Step 5: Set the task to run on Schedule
 You can now set the task to run every X.  We have ours set to run every 6 hours.  This can be accomplish from here:
 
-![cronSchedule](https://github.com/oliviervaillancourt/blog/blob/master/FreedomeVPNPromoWatcherWebTask/cronSchedule.png "Cron Schedule")
+![cronSchedule](cronSchedule.png "Cron Schedule")
 
 ### It's a bit rough --> things that could be improved
 
