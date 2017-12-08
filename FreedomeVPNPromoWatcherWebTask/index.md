@@ -14,7 +14,7 @@ Example of email received when the notification fires:
 > Ok, it's a bit rough and could be improved but it does the job for now ;)
 
 ### How are we going to do this?
-*Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which is run is great.  Also, serverless platform (Auth0`s Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
+*Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which is run is great.  Also, serverless platform (Auth0 Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
 
 So, we write a javascript function that will, on a schedule:
 * fetch the latest tweets from `@freedomeVPN`
@@ -41,7 +41,7 @@ So, we write a javascript function that will, on a schedule:
 
 ### Step 4: Put some code in the function
 You can start with this code:
-```js
+```
 'use latest';
 import sendgrid from 'sendgrid@4.7.0';
 import rp from 'request-promise';
@@ -120,7 +120,7 @@ Let's break it down a bit...
 
 **First** the programming model that webtask uses is described in details [here](https://webtask.io/docs/model) but the general idea of it is that we need to export a function that will be call the node.js callback function (`cb` in this case) when your job is done.  `Auth0 webtask` will invoke our function either on 1) a http request on the webtask URL or 2) on a CRON schedule.
 
-```js
+```
 module.exports = (context, cb) => {cb(null, "Job done")}
 ```
 
@@ -135,14 +135,14 @@ Since the bearer don't seem to expire, we just use Postman to `POST` to <https:/
 ![twitter Creds to Bearer Token](twitterCredsToToken.png "Exchange credentials for Token")
   We set that bearer on the authorization header of every twitter API calls like so:
 
-``` js
+```
     headers: {
     'Authorization': 'Bearer ' + context.secrets.TWITTER_API_KEY
 ```
 Notice that we are pulling the twitter api key from a Webtask concept called `secrets`.  This is basically a set of encrypted value that your webtask has access to.  Great place to put API keys.  In order to set the secret, you can use the editor ![secret manager](secretManager.png "Setting secret Value")
 
 **Third** we will check if any tweet returned by the API seem to have a promotion in it.  So far, this check is *very very very* simplistic (we just check that the string of the tweet contains '%')
-```js
+```
 if (respJson[i].text.includes('%')) {
 ```
 
@@ -151,7 +151,7 @@ We invoke Sendgrid HTTPS API to send ourselves an email
 
 **Fifth**
 We have to save the last tweet ID returned in this request to not request it again later.  This is used by leveraging another of Auth0 Webtask feature called `storage`.  `Storage` a 500 kb JSON object that you can read and write to.  So we save our lastTweetId this way:
-```js
+```
     context.storage.set({ 'lastTweetId': respJson[0].id_str }, { force: 1 }, ... 
 ```
 
