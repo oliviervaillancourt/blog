@@ -17,15 +17,15 @@ Example of email received when the notification fires:
 *Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which is run is great.  Also, serverless platform (Auth0`s Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
 
 So, we write a javascript function that will, on a schedule:
-- fetch the latest tweets from `@freedomeVPN`
-- Scan through each tweet's text to figure out if there's a promotion in there
-- Use the [Sendgrid Mail v3 API ](https://sendgrid.com/docs/API_Reference/api_v3.html) to send ourselves an email with that tweet information
+* fetch the latest tweets from `@freedomeVPN`
+* Scan through each tweet's text to figure out if there's a promotion in there
+* Use the [Sendgrid Mail v3 API ](https://sendgrid.com/docs/API_Reference/api_v3.html) to send ourselves an email with that tweet information
 
 ### Step 1: setup a `twitter` dev account and app
-- If not already done, head over to <https://developer.twitter.com> and register as a twitter dev (think you need to click on 'Apply')
-- Twitter API works off the concept of application.  Basically any https calls made to the API must be made in the *context* of an application.  There's a lot more than we need here, but we still need an application.  Navigate to <https://apps.twitter.com> and create a new application like so:
+* If not already done, head over to <https://developer.twitter.com> and register as a twitter dev (think you need to click on 'Apply')
+* Twitter API works off the concept of application.  Basically any https calls made to the API must be made in the *context* of an application.  There's a lot more than we need here, but we still need an application.  Navigate to <https://apps.twitter.com> and create a new application like so:
 ![twitter app creation](twitterAppCreation.png "Twitter app creation")
-- Then take note of the `API Key` and `API Secret` from the `Keys and Access Tokens` tab.  They will be used to authenticate against the twitter api later:
+* Then take note of the `API Key` and `API Secret` from the `Keys and Access Tokens` tab.  They will be used to authenticate against the twitter api later:
 ![twitter keys](twitterAppKeys.png "Twitter keys")
 
 ### Step 2: setup a `Sendgrid` account
@@ -163,15 +163,15 @@ You can now set the task to run every X.  We have ours set to run every 6 hours.
 ### It's a bit rough --> things that could be improved
 
 As you can see, this is still a bit rough around the edges and a lot of things can be improved.  For example:
-- Things to make it less obvious that I'm more familiar with C# than Javascript ;)
-  - Maybe using things like `Async` npm module to make code more readable
-- Handle the case where multiple tweets have the '%' char in it
-- ...
+* Things to make it less obvious that I'm more familiar with C# than Javascript ;)
+  * Maybe using things like `Async` npm module to make code more readable
+* Handle the case where multiple tweets have the '%' char in it
+* ...
 
 ### Conclusion
 
 I've worked on this webtask because I wanted to experiement with threading together different service in a serverless environment. I know there are other options out there to do similar things.
--  I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
-- I know <https://zapier.com> can be used here but not sure about the pricing
+* I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
+* I know <https://zapier.com> can be used here but not sure about the pricing
 
 *Hope it helps*
