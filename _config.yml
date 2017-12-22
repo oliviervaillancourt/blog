@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 title:             Clean Blog
 email:             your-email@example.com
 description:       A Blog Theme by Start Bootstrap
@@ -18,7 +17,3 @@ paginate_path:     "/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
-=======
-theme: jekyll-theme-slate
-title: Random Thoughts on Building Software and Cyber Security
->>>>>>> e2d3a9abd0cff45af7866e7a1df5c72c0210edbe
