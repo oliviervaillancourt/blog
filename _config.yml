@@ -1,14 +1,13 @@
-title:             Clean Blog
+title:             Random Thoughts About Software Development and Cyber Security
 email:             your-email@example.com
-description:       A Blog Theme by Start Bootstrap
-author:            Start Bootstrap
+description:       My views on software and cyber security
+author:            Olivier Vaillancourt
 baseurl:           "/startbootstrap-clean-blog-jekyll"
 url:               "http://blackrockdigital.github.io"
 
 # Social Profiles
-twitter_username:  SBootstrap
-github_username:   BlackrockDigital
-facebook_username: StartBootstrap
+twitter_username:  olivaillancourt
+github_username:   oliviervaillancourt
 
 # Build settings
 markdown:          kramdown
