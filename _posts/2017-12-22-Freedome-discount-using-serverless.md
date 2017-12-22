@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Saving money on Freedome VPN while playing with serverless computing"
+subtitle: "Using serverless to watch @FreedomeVPN and getting notified when there's a discounted price"
+date:   2017-12-12 12:00:00 -0500
+background: '/img/posts/06.jpg'
+---
+
 ## In this blog post, we will cover how to use [Auth0's Webtask](https://webtask.io), a serverless platform to monitor the twitter feed of *FreedomeVPN* and send us an email using [Sendgrid](https://sendgrid.com) when we find a promotion on Freedome VPN
 
 ----
