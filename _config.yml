@@ -4,6 +4,7 @@ description:       My views on software and cyber security
 author:            Olivier Vaillancourt
 baseurl:           "/"
 url:               "https://oliviervaillancourt.com"
+highlighter: rouge
 
 # Social Profiles
 twitter_username:  olivaillancourt
