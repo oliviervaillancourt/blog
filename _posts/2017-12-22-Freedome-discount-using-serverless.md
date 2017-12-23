@@ -20,7 +20,7 @@ Example of email received when the notification fires:
 > Ok, it's a bit rough and could be improved but it does the job for now ;)
 
 ### How are we going to do this?
-*Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which is run is great.  Also, serverless platform (Auth0 Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
+*Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which it runs is great.  Also, serverless platform (Auth0 Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
 
 So, we write a javascript function that will, on a schedule:
 
@@ -125,7 +125,7 @@ module.exports = (context, cb) => {
 
 Let's break it down a bit...
 
-**First** the programming model that webtask uses is described in details [here](https://webtask.io/docs/model) but the general idea of it is that we need to export a function that will be call the node.js callback function (`cb` in this case) when your job is done.  `Auth0 webtask` will invoke our function either on 1) a http request on the webtask URL or 2) on a CRON schedule.
+**First** the programming model that webtask uses is described in details [here](https://webtask.io/docs/model) but the general idea of it is that we need to export a function that will call the node.js callback function (`cb` in this case) when your job is done.  `Auth0 webtask` will invoke our function either on 1) a http request on the webtask URL or 2) on a CRON schedule.
 
 ```js
 module.exports = (context, cb) => {cb(null, "Job done")}
@@ -179,7 +179,7 @@ As you can see, this is still a bit rough around the edges and a lot of things c
 
 ### Conclusion
 
-I've worked on this webtask because I wanted to experiement with threading together different service in a serverless environment. I know there are other options out there to do similar things.
+I've worked on this webtask because I wanted to experiment with threading together different services in a serverless environment. I know there are other options out there to do similar things.
 
 * I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
 * I know <https://zapier.com> can be used here but not sure about the pricing
