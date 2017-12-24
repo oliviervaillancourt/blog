@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+<link rel="stylesheet" href="{{"/assets/githubbutton.css" | relative_url }}">
 <!-- Page Header -->
 {% if page.background %}
 <header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
@@ -19,8 +19,8 @@ layout: default
           {% endif %}
           <span class="meta">Posted by {{ page.author }}
             on {{ page.date | date: '%B %d, %Y' }}</span>
-            <span>{% github_edit_link "Improve this page" %}</span>
-        </div>
+            <a href="{% github_edit_link %}"><span class="gitbutton"><img class="giticon" src="/img/Octicons-mark-github.svg"/>Make this post better</a></span>
+          </div>
       </div>
     </div>
   </div>
