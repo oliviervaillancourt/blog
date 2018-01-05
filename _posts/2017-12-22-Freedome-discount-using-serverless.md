@@ -165,7 +165,7 @@ We have to save the last tweet ID returned in this request to not request it aga
 ```
 
 ### Step 5: Set the task to run on Schedule
-You can now set the task to run every X.  We have ours set to run every 6 hours.  This can be accomplished from here:
+You can now set the task to run periodically through a CRON schedule.  We have ours set to run every 6 hours.  This can be accomplished from here:
 
 ![cronSchedule](/img/posts/freedome_serverless/cronSchedule.png)
 
@@ -174,15 +174,24 @@ You can now set the task to run every X.  We have ours set to run every 6 hours.
 As you can see, this is still a bit rough around the edges and a lot of things can be improved.  For example:
 
 - Simplify the nested callback structure
-  - Maybe using things like `Async` npm module to make code more readable
+  - Maybe using things like `Async` npm module to make code more readable. 
+  
+  (*EDIT Jan 4th 2018*: [Auth0 Webtasks support Node8](https://tomasz.janczuk.org/2017/09/auth0-webtasks-and-node-8.html) so I could use `Async/Await`)
 - Handle the case where multiple tweets have the '%' char in it
 - ...
 
 ### Conclusion
 
-I've worked on this webtask because I wanted to experiment with threading together different services in a serverless environment. I know there are other options out there to do similar things.
+I know there are other options out there to do similar things.
 
 * I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
 * I know <https://zapier.com> can be used here but not sure about the pricing
+
+
+But i've worked on this Webtask because I wanted to experiment with threading together different services in a serverless environment. 
+
+Overall, I must say that working with Webtask was pretty easy even though most of experience is on the c#/.net stack.  In this particular case I really enjoyed:
+- the programming/debugging experience in the browser for really fast iteration on the code
+- the `secrets` feature of webtask to hide away api keys and avoiding checking them in in Github
 
 *Hope it helps* 
