@@ -8,12 +8,12 @@ categories: serverless vpn
 cover:  "/img/posts/freedome_serverless/FreeDome-Webtask-Twitter-MainImage.jpg"
 ---
 
-## In this blog post, we will cover how to use [Auth0's Webtask](https://webtask.io), a serverless platform to monitor the twitter feed of *FreedomeVPN* and send us an email using [Sendgrid](https://sendgrid.com) when we find a promotion on Freedome VPN
+## In this blog post, we will cover how to use [Auth0 Webtasks](https://webtask.io), a serverless platform to monitor the twitter feed of *FreedomeVPN* and send us an email using [Sendgrid](https://sendgrid.com) when we find a promotion on Freedome VPN
 
 ----
 
 ### The idea
-Ok, so the idea is to watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome), be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ year now and it's great.  I started using it on [Troy Hunt's](https://www.troyhunt.com/the-importance-of-trust-and-integrity-in-a-vpn-provider-and-how-mysafevpn-blew-it/) recommendation and I'm very satisfied with it.  
+Ok, so the idea is to watch the tweets from @freedomeVPN (using the Twitter API) and when there's a tweet that seems like it's a promo on the [freedome VPN service](https://www.f-secure.com/en/web/home_global/freedome), be notified so that we can save some money.  I've been using freedome on my Windows PC and Android phone for 1+ years now and it's great.  I started using it on [Troy Hunt's](https://www.troyhunt.com/the-importance-of-trust-and-integrity-in-a-vpn-provider-and-how-mysafevpn-blew-it/) recommendation and I'm very satisfied with it.  
 
 Example of email received when the notification fires:
 ![email received](/img/posts/freedome_serverless/sampleEmail.png)
@@ -21,7 +21,7 @@ Example of email received when the notification fires:
 > Ok, it's a bit rough and could be improved but it does the job for now ;)
 
 ### How are we going to do this?
-*Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which it runs is great.  Also, serverless platform (Auth0 Webtask, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
+*Serverless* is pretty hot these days.  The idea being that you can just worry about code and NOT the infrastructure on which it runs is great.  Also, serverless platform (Auth0 Webtasks, Azure Functions, AWS Lamba) are very cheap, even free when your usage is low.  
 
 So, we write a javascript function that will, on a schedule:
 
@@ -42,7 +42,7 @@ So, we write a javascript function that will, on a schedule:
 3. Get an API key like so: **Take a note of the API Key somewhere**:
 ![sendgrid Api Key](/img/posts/freedome_serverless/sendGridApiKey.png)
 
-### Step 3: setup an `Auth0 webtask`
+### Step 3: setup an `Auth0 Webtasks`
 1. Go to <https://webtask.io> and setup your account
 2. You can use the CLI to create the webtask but I've used the HTML editor instead.  So go to <https://webtask.io/make> to invoke the editor
 3. Create a new Webtask (select `Empty Function` for the type) and give it a name
@@ -126,7 +126,7 @@ module.exports = (context, cb) => {
 
 Let's break it down a bit...
 
-**First** the programming model that webtask uses is described in details [here](https://webtask.io/docs/model) but the general idea of it is that we need to export a function that will call the node.js callback function (`cb` in this case) when your job is done.  `Auth0 webtask` will invoke our function either on 1) a http request on the webtask URL or 2) on a CRON schedule.
+**First** the programming model that webtask uses is described in details [here](https://webtask.io/docs/model) but the general idea of it is that we need to export a function that will call the node.js callback function (`cb` in this case) when your job is done.  `Auth0 Webtasks` will invoke our function either on 1) a http request on the webtask URL or 2) on a CRON schedule.
 
 ```js
 module.exports = (context, cb) => {cb(null, "Job done")}
@@ -159,7 +159,7 @@ if (respJson[i].text.includes('%')) {
 We invoke Sendgrid HTTPS API to send ourselves an email
 
 **Fifth**
-We have to save the last tweet ID returned in this request to not request it again later.  This is used by leveraging another of Auth0 Webtask feature called `storage`.  `Storage` a 500 kb JSON object that you can read and write to.  So we save our lastTweetId this way:
+We have to save the last tweet ID returned in this request to not request it again later.  This is used by leveraging another of Auth0 Webtasks feature called `storage`.  `Storage` a 500 kb JSON object that you can read and write to.  So we save our lastTweetId this way:
 ```js
     context.storage.set({ 'lastTweetId': respJson[0].id_str }, { force: 1 }, ... 
 ```
