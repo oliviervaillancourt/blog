@@ -133,7 +133,7 @@ module.exports = (context, cb) => {cb(null, "Job done")}
 ```
 
 **Second** we will need to invoke the twitter API to get tweets.
-We do this by invoke the twitter API at `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=freedomeVPN&count=100&exclude_replies=true&trim_user=true&since_id=XXXXXX`.  This basically gets us a JSON response with all tweets from @freedomeVPN since the tweetId specified on the `since_id` parameter
+We do this by invoking the twitter API at `https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=freedomeVPN&count=100&exclude_replies=true&trim_user=true&since_id=XXXXXX`.  This basically gets us a JSON response with all tweets from @freedomeVPN since the tweetId specified on the `since_id` parameter
 
 We must include our authentication header to those calls.  This is a 2 step process.
 
@@ -165,7 +165,7 @@ We have to save the last tweet ID returned in this request to not request it aga
 ```
 
 ### Step 5: Set the task to run on Schedule
-You can now set the task to run every X.  We have ours set to run every 6 hours.  This can be accomplish from here:
+You can now set the task to run every X.  We have ours set to run every 6 hours.  This can be accomplished from here:
 
 ![cronSchedule](/img/posts/freedome_serverless/cronSchedule.png)
 
