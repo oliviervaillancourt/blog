@@ -184,7 +184,7 @@ As you can see, this is still a bit rough around the edges and a lot of things c
 
 I know there are other options out there to do similar things.
 
-* I've tried <https://ifttt.com> and it seems like I was lagging a way to apply filtering on the incoming tweets
+* I've tried <https://ifttt.com> and it seems like I was lacking a way to apply filtering on the incoming tweets
 * I know <https://zapier.com> can be used here but not sure about the pricing
 
 
