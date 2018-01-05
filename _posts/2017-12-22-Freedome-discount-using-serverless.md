@@ -147,7 +147,7 @@ Since the bearer don't seem to expire, we just use Postman to `POST` to <https:/
     headers: {
     'Authorization': 'Bearer ' + context.secrets.TWITTER_API_KEY
 ```
-Notice that we are pulling the twitter api key from a Webtask concept called `secrets`.  This is basically a set of encrypted value that your webtask has access to.  Great place to put API keys.  In order to set the secret, you can use the editor 
+Notice that we are pulling the twitter api key from a Webtask concept called `secrets`.  This is basically a set of encrypted values that your webtask has access to.  Great place to put API keys.  In order to set the secret, you can use the editor 
 ![secret manager](/img/posts/freedome_serverless/secretManager.png)
 
 **Third** we will check if any tweet returned by the API seem to have a promotion in it.  So far, this check is *very very very* simplistic (we just check that the string of the tweet contains '%')
