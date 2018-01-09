@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Saving money on Freedome VPN while playing with serverless computing"
-subtitle: "Using serverless to watch @FreedomeVPN and getting notified when there's a discounted price"
+subtitle: "Using Auth0 Webtasks, a serverless platform to watch @FreedomeVPN and get notified when there's a discounted price"
 date:   2017-12-12 12:00:00 -0500
 author: 'Olivier Vaillancourt'
 categories: serverless vpn
