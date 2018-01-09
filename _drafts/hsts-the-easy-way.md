@@ -2,10 +2,10 @@
 layout: post
 title:  "HTTP Strict Transport Security (HSTS) --> the easy way"
 subtitle: "How to easily setup HSTS with Cloudflare to make sure all traffic to your website in encrypted using HTTPS"
-date:   2017-12-12 12:00:00 -0500
+date:   2018-01-08 12:00:00 -0500
 author: 'Olivier Vaillancourt'
 categories: hsts
-cover:  "/img/posts/easy_hsts/hsts-MainImage.jpg"
+cover:  "/img/posts/easy_hsts/easy_hsts_post_cover.png"
 ---
 
 ## In this blog post, we will cover a very easy way to get HTTP strict transport security (HSTS) setup for a website.
@@ -16,7 +16,7 @@ For a more detailed explanation, check out either [Troy Hunt's great post](https
 
 ### How to get this HTTP response header for your website
 
-for my blog, I use [Cloudflare](https://www.cloudflare.com) to enhance security "on the cheap" (since I use the free plan).
+For my blog, I use [Cloudflare](https://www.cloudflare.com) to enhance security "on the cheap" (since I use the free plan).
 
 So, using Cloudflare makes it dead simple to turn on HSTS.
 
@@ -32,7 +32,7 @@ From then on, Cloudflare adds the *http-strict-transport* header to each respons
 
 ### Wait, didn't you just say that the first request was over http (not https)???
 
-Yes, in HSTS the first request made to a website from a browser (wether that is the first request ever or the first after the *mag-age* has expired) is vulnerable to [Man-in-the-middle attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)
+Yes, in HSTS the first request made to a website from a browser (whether that is the first request ever or the first after the *mag-age* has expired) is vulnerable to [Man-in-the-middle attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)
 
 But there's a way solve this.
 
@@ -40,13 +40,13 @@ The Chromium project (guys behind Google Chrome) have a mechanism for your domai
 
 It takes time between submission and approval (not sure how much to be honest) but I did [submit oliviervaillancourt.com for HSTS preload](https://hstspreload.org/?domain=oliviervaillancourt.com) and will update this post once it's done.  Remember I set *max-age* to 12 months instead of the recommended 6 in step 3 above.  This is because the Chromium submission process requires.
 
-In the mean time, there's even an API to check your submission progress: <https://hstspreload.appspot.com/api/v2/status?domain=oliviervaillancourt.com>
+In the meantime, there's even an API to check your submission progress: <https://hstspreload.appspot.com/api/v2/status?domain=oliviervaillancourt.com>
 
 ### In Conclusion
 
 - Using HTTPS is important, very important for a various set of reasons and it's the gold standard now.
 - Using Cloudflare make it very very easy to have almost all requests go over HTTPS (exception made of this *first* request)
   - I love that it's just switches and clicking
-  - I like that there's explanation in the CloudFlare UI to explain the consequences
+  - I like that there's explanation in the Cloudflare UI to explain the consequences
 
 Happy HTTPSing :)
