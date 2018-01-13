@@ -9,7 +9,7 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: Random Thougts about Software Development and Cyber Security
+title: Random Thoughts about Software Development and Cyber Security
 subtitle: "by Olivier Vaillancourt"
 email: ''
 name: Olivier Vaillancourt
