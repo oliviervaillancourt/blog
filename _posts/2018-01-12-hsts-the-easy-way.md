@@ -2,7 +2,6 @@
 layout: post
 title:  "HTTP Strict Transport Security (HSTS) --> the easy way"
 subtitle: "How to easily setup HSTS with Cloudflare to make sure all traffic to your website in encrypted using HTTPS"
-date:   2018-01-08 12:00:00 -0500
 author: 'Olivier Vaillancourt'
 categories: hsts
 cover:  "/img/posts/easy_hsts/easy_hsts_post_cover.png"
