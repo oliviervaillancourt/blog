@@ -6,6 +6,12 @@ layout: default
     width:24px !important;
     margin: 5px
 }
+.makePostBetter {
+  display: flex;
+  line-height: 24px;
+  vertical-align: middle;
+  margin: 0 auto; 
+}
 </style>
 <div class="post">
 
@@ -15,11 +21,9 @@ layout: default
       <h1 class="title">{{ page.title }}</h1>
       <p class="info">by <strong>{{ page.author }}</strong></p>
       <a href="{% github_edit_link %}">
-      <button>
-        <span>
+      <button class="makePostBetter">
           <img class="giticon" src="/img/Octicons-mark-github.svg" />
-            Make this post better
-        </span>
+          <span style="margin-left: 10px">Make this post better</span>
       </button>
       </a>
       </header>
