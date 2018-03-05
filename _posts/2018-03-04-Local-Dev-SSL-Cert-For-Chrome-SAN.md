@@ -2,7 +2,7 @@
 layout: post
 title:  "Using Powershell to create a HTTPS certificate that Chrome will accept when doing local development"
 subtitle: "Chrome now requires TLS/SSL certificate to have a Subject Alternative Name and also forces .dev and .foo to only use HTTPS through HSTS"
-date:   2018-01-04 12:00:00 -0500
+date:   2018-03-04 12:00:00 -0500
 author: 'Olivier Vaillancourt'
 categories: HSTS
 cover:  "/img/posts/powershell_cert_local_dev_chrome/sslCert_SAN_Powershell.png"
