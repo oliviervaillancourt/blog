@@ -17,6 +17,8 @@ cover:  "/img/posts/async_await_webtask/asyncawait.png"
 
 Since Webtask now runs on Node 8, support for `async/await` is available.  So let's use it.
 
+*Note: you can find the full source [here](/misc/posts/async_await_webtask/freedomeVPNWatcher.js)*
+
 ### Step 1, identify what would benefit from `async/await`
 
 Basically my function does 4 things:
