@@ -7,7 +7,7 @@ git clone
 
 cd blog
 
-docker run --rm --volume="${PWD}:/srv/jekyll" -p:4000:4000 -it jekyll/jekyll:3.8 jekyll serve --force_polling --incremental
+docker run --rm --volume="${PWD}:/srv/jekyll" -p:4000:4000 -it jekyll/jekyll:3.8 jekyll serve --force_polling
 ```
 
 Look for updated version (`3.8` in example above) tag the docker container 
