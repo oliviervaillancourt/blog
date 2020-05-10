@@ -94,7 +94,7 @@ During development, it's annoying for sure, but if you have `information` level 
 
 The gist of the fix is to create a context sensitive `JwtBearerHandler` that will ignore tokens issued for different issuer than their authority states.
 
-We do it by first creating a new class called `AzureADJWTAuthenticationHandler` and will derived from `JwtBearerHandler` which is the type ASP.NET Core uses when calling `.AddJwtBearer`. [source]((https://github.com/dotnet/aspnetcore/blob/v3.1.3/src/Security/Authentication/JwtBearer/src/JwtBearerExtensions.cs)
+We do it by first creating a new class called `AzureADJWTAuthenticationHandler` and will derived from `JwtBearerHandler` which is the type ASP.NET Core uses when calling `.AddJwtBearer`.  See the [source](https://github.com/dotnet/aspnetcore/blob/v3.1.3/src/Security/Authentication/JwtBearer/src/JwtBearerExtensions.cs).
 
 Then we will introduce logic to check the incoming token issuer and match it against that given instance's issuer (as dictated by the Authority)
 
