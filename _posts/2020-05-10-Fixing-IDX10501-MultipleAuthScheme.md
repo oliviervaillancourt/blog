@@ -4,7 +4,7 @@ title: "Removing misleading IDX10501 when multiple authentication scheme in ASP.
 subtitle: "Because getting IDX10501: Signature validation failed. Unable to match key when the request actually succeeds is a pain"
 date: 2020-05-10 12:00:00 -0500
 author: 'Olivier Vaillancourt'
-categories: 'aspnet.core' jwt
+categories: aspnet.core jwt
 cover: "/img/posts/IDX10501/IDX10501_Cover2.png"
 ---
 
