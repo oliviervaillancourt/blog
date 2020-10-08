@@ -10,6 +10,8 @@ cover: "/img/posts/IDX10501/IDX10501_cover.png"
 
 ## In this blog post, we will cover the situation where using multiple `ASP.NET Core 3.1` JWT authentication scheme leads to having *information* IDX10501 level log that are totally misleading.  We will also offer a solution.  
 
+> [Oct 2020 - Update] We also find different way to accomplish the same goal but making use of `Events` property on the `JwtBearerOptions`.  A bit simpler.  [See this discussion](https://github.com/oliviervaillancourt/blog/issues/3)
+
 ----
 
 ### The situation
