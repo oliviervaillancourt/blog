@@ -7,10 +7,10 @@ git clone
 
 cd blog
 
-docker run --rm --volume="${PWD}:/srv/jekyll" -p:4000:4000 -it jekyll/jekyll:3.8 jekyll serve --force_polling
+docker run --rm --volume="${PWD}:/srv/jekyll" -p:4000:4000 -it jekyll/jekyll:4.0 jekyll serve --force_polling
 ```
 
-Look for updated version (`3.8` in example above) tag the docker container 
+Look for updated version (`4.0` in example above) tag the docker container 
 
 ## Attribution
 For theming, I'm using the 'Centrarium' Jekyll theme from https://github.com/bencentra/centrarium.  
