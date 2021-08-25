@@ -39,7 +39,7 @@ Once that is done you can either:
 
 This is a demo of the latter option
 
-![](/img/posts/HstsBreakCliLogin/fix.gif)
+![](/img/posts/HstsBreakCliLogin/Fix.gif)
 
 ### Take away / final thoughts
 
