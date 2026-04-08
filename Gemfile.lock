@@ -1,12 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.4.0)
+    addressable (2.9.0)
+      public_suffix (>= 2.0.2, < 8.0)
     colorator (1.1.0)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
-    ffi (1.12.2-x64-mingw32)
     forwardable-extended (2.6.0)
     jekyll (3.6.3)
       addressable (~> 2.4)
@@ -25,8 +25,8 @@ GEM
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
-    jekyll-sitemap (0.11.0)
-      addressable (~> 2.4.0)
+    jekyll-sitemap (1.2.0)
+      jekyll (~> 3.3)
     jekyll-watch (1.5.1)
       listen (~> 3.0)
     kramdown (1.17.0)
@@ -40,6 +40,7 @@ GEM
       sawyer (~> 0.8.0, >= 0.5.3)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
+    public_suffix (3.1.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -50,13 +51,13 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sawyer (0.8.1)
-      addressable (>= 2.3.5, < 2.6)
-      faraday (~> 0.8, < 1.0)
+    sawyer (0.8.2)
+      addressable (>= 2.3.5)
+      faraday (> 0.8, < 2.0)
 
 PLATFORMS
   ruby
-  x64-mingw32
+  x64-mingw-ucrt
 
 DEPENDENCIES
   jekyll
